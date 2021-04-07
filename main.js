@@ -23,12 +23,25 @@ const returnRandBase = () => {
         let mutatedBase = nucleobase[Math.floor(Math.random() * nucleobase.length)]
         console.log(`Changed ${this.dna[Math.floor(Math.random() * this.dna.length)]} to ${mutatedBase}`)
         return this.dna.splice(Math.floor(Math.random()* this.dna.length),1,mutatedBase) // Adding new Mutated String
+      },
+      compareDNA(pAequor){
+        let firstSample = ['A', 'C', 'T', 'G'];
+        let secondSample = pAequor;
+        
+        const misFit = firstSample.filter((el,index) => {
+            if(!secondSample.includes(el)){
+              return true
+            }
+        });
+      return (misFit.length * 100) / firstSample.length
       }
     } 
+
+
       
   }
 
-  const testMutation = pAequorFactory(1,mockUpStrand())
+const testMutation = pAequorFactory(1,mockUpStrand())
 console.log(testMutation.dna)
 
 testMutation.mutate()
