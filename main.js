@@ -25,7 +25,7 @@ const returnRandBase = () => {
         return this.dna.splice(Math.floor(Math.random()* this.dna.length),1,mutatedBase) // Adding new Mutated String
       },
       compareDNA(pAequor){
-        let firstSample = ['A', 'C', 'T', 'G'];
+        let firstSample = this.dna;
         let secondSample = pAequor;
         
         const misFit = firstSample.filter((el,index) => {
