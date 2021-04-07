@@ -33,16 +33,40 @@ const returnRandBase = () => {
               return true
             }
         });
-      return (misFit.length * 100) / firstSample.length
+      const match = (misFit.length * 100) / firstSample.length
+
+      return `sample #1 and sample #2 have ${match}% DNA in common`
+      },
+
+      willLikelySurvive(){
+        let cgCounter = 0;
+    
+        const dnaCount = this.dna.map((el) => {
+            if(el === 'C' || el === 'G'){
+                cgCounter++
+            }
+        })
+        
+          
+          
+            const totalDNAlength = this.dna.length;
+        
+            const survivePercentage = (cgCounter*100) / totalDNAlength
+            console.log(`${survivePercentage.toFixed()}%`)
+            
+            // survivePercentage > 60 ? true: false;
+            if(survivePercentage > 60){
+              return true
+            } else {
+              return false
+            }
       }
-    } 
+    }
 
-
-      
   }
 
 const testMutation = pAequorFactory(1,mockUpStrand())
-console.log(testMutation.dna)
+console.log(testMutation.willLikelySurvive())
 
 testMutation.mutate()
 console.log(testMutation.dna)
