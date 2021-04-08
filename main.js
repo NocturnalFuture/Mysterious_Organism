@@ -65,8 +65,14 @@ const returnRandBase = () => {
 
   }
 
-const testMutation = pAequorFactory(1,mockUpStrand())
-console.log(testMutation.willLikelySurvive())
+  // Running Tests
+  let dnaSequence = [];
+  let i = 0;
 
-testMutation.mutate()
-console.log(testMutation.dna)
+while(dnaSequence.length <= 30) {
+  let testDna = pAequorFactory(i,mockUpStrand());
+  if(testDna.willLikelySurvive()){
+    dnaSequence.push(testDna);
+    i++;
+  }
+}
